@@ -99,7 +99,7 @@ class SampleProducer
 end
 
 if __FILE__ == $0
-  aws_region = nil
+  aws_region = 'us-east-1'
   stream_name = 'kclrbsample'
   shard_count = nil
   sleep_between_puts = 0.25
@@ -112,9 +112,6 @@ if __FILE__ == $0
     end
     opts.on("-d SHARD_COUNT", "--shards SHARD_COUNT", "Number of shards to use when creating the stream. (Default: 2)") do |s|
       stream_name = s
-    end
-    opts.on("-r REGION_NAME", "--region REGION_NAME", "AWS region name (see http://tinyurl.com/cc9cap7). (Default: SDK default)") do |r|
-      aws_region = r
     end
     opts.on("-p SLEEP_SECONDS", "--sleep SLEEP_SECONDS", Float, "How long to sleep betweep puts (seconds, can be fractional). (Default #{sleep_between_puts})") do |s|
       sleep_between_puts = s.to_f
